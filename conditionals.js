@@ -85,7 +85,7 @@ function lightStatus(brightness) {
 */
 
 function getLightBulbStatusDisplayString(status) {
-    let result = status
+   let result = status;
 
     switch(result) {
       case "on":
@@ -218,13 +218,21 @@ function turnOffLight(lightName) {
 /* 
    -------YOUR CODE-----------------------------------------------------------
 */
+let livingRoomLight = {};
+let diningRoomLight = {};
 function updateLights(somebodyIsHome, theyAreWatchingTV, itIsDarkOutside, theyAreCooking, theyWentToBed) {
 
-    // Write your code here!  You don't need to return anything, just call the given functions
-    // You should be using if else statements and the function arguments
-    // example of turning a light on
+    if (somebodyIsHome) {
+        livingRoomLight == "on"
+        diningRoomLight == "on"
+    } else {
+        
+    }
+
+
     turnOnLight("livingRoomLight");
-    // example of turning off a light
+
+
     turnOffLight("livingRoomLight");
 }
 
