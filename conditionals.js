@@ -85,7 +85,7 @@ function lightStatus(brightness) {
 */
 
 function getLightBulbStatusDisplayString(status) {
-   let result;
+   let result = "";
 
     switch(status) {
       case "on":
