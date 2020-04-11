@@ -85,32 +85,32 @@ function lightStatus(brightness) {
 */
 
 function getLightBulbStatusDisplayString(status) {
-   let result = status;
+   let result;
 
-    switch(result) {
+    switch(status) {
       case "on":
-            console.log("The house is bright!");
+            result = "The house is bright!";
         break;
         case "dimmed":
-            console.log ("The house is nice and dim");
+            result = "The house is nice and dim";
         break;
         case "deleted":
-            console.log("The lightbulb has been removed from the system");
+            result = "The lightbulb has been removed from the system";
         break;
         case "off":
-            console.log("The house is dark");
+            result = "The house is dark";
         break;
         case "broken":
-            console.log("The house is dark and we can't turn the light on!");
+            result = "The house is dark and we can't turn the light on!";
         break;
         case "missing":
-            console.log("The house is dark and we can't find the lightbulb!");
+            result = "The house is dark and we can't find the lightbulb!";
         break;
         case "offline":
-            console.log("The house is dark and we can't find the lightbulb!");
+            result = "The house is dark and we can't find the lightbulb!";
         break;
         default:
-            console.log("Something is wrong!");
+            result = "Something is wrong!";
         break;
     }
     return result;
@@ -218,22 +218,34 @@ function turnOffLight(lightName) {
 /* 
    -------YOUR CODE-----------------------------------------------------------
 */
-let livingRoomLight = {};
-let diningRoomLight = {};
 function updateLights(somebodyIsHome, theyAreWatchingTV, itIsDarkOutside, theyAreCooking, theyWentToBed) {
 
-    if (somebodyIsHome) {
-        livingRoomLight == "on"
-        diningRoomLight == "on"
+    if (!somebodyIsHome) {
+        turnOffLight("livingRoomLight");
+        turnOffLight("diningRoomLight");
+        turnOnLight("frontPorchLight");
+        turnOffLight("kitchenLight");
+        turnOffLight("bedroomLight");
     } else {
-        
+       if (!theyWentToBed) {
+        turnOnLight("livingRoomLight");
+        turnOnLight("diningRoomLight");
+        } else {
+            turnOnLight("bedroomLight"); 
+        }
+        if (theyAreCooking) {
+            turnOnLight("kitchenLight");
+        }
+        if (theyAreWatchingTV) {
+            turnOffLight("livingRoomLight");
+            turnOffLight("diningRoomLight");
+        }
     }
-
-
-    turnOnLight("livingRoomLight");
-
-
-    turnOffLight("livingRoomLight");
+    if (itIsDarkOutside) {
+        turnOnLight("frontPorchLight");
+    } else {
+        turnOffLight("frontPorchLight");
+    }
 }
 
 /* 
