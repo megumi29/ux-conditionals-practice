@@ -72,15 +72,12 @@ a chain of if else statements, some of those just might need multible conditions
 
 let number = 16;
 // Your code here.
-if (number > 10 && number < 20) {
-  console.log("Between 10 and 20!");
-}
-if (number >= 20) {
-  console.log("20 or greater!");
-}
 if (number === 16) {
   console.log("16!");
-}
-if (number <= 10) {
+} else if (number >= 20) {
+  console.log("20 or greater!");
+} else if (number > 10 && number < 20) {
+  console.log("Between 10 and 20!");
+} else if (number <= 10) {
   console.log("10 or less!");
 }
